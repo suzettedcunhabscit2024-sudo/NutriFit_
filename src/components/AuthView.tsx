@@ -130,6 +130,8 @@ export const AuthView: React.FC = () => {
         friendlyMessage = 'No account found with this email. Please register first.';
       } else if (err?.code === 'auth/operation-not-allowed') {
         friendlyMessage = 'Email/Password sign-in is not yet enabled in your Firebase console. Please sign in with Google or enable Email/Password provider in the Firebase Console.';
+      } else if (err?.code === 'auth/unauthorized-domain') {
+        friendlyMessage = 'This preview domain is not yet allowlisted in your Firebase Console (Authentication > Settings > Authorized domains). Please add this domain to allow sign-in.';
       } else if (err?.message) {
         friendlyMessage = err.message;
       }
@@ -185,7 +187,13 @@ export const AuthView: React.FC = () => {
       }
     } catch (err: any) {
       console.error('Google sign-in error:', err);
-      if (err?.code !== 'auth/popup-closed-by-user') {
+      if (err?.code === 'auth/popup-closed-by-user') {
+        // User voluntarily dismissed popup
+      } else if (err?.code === 'auth/unauthorized-domain') {
+        setErrorMessage('This preview domain is not yet allowlisted in your Firebase Console (Authentication > Settings > Authorized domains). Please add this domain to allow sign-in.');
+      } else if (err?.code === 'auth/operation-not-allowed') {
+        setErrorMessage('Google Sign-in is not yet enabled in your Firebase Console (Authentication > Sign-in method). Please enable it.');
+      } else {
         setErrorMessage(err?.message || 'Google sign in failed. Please try again.');
       }
     } finally {

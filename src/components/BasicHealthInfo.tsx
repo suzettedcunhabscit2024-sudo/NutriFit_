@@ -7,22 +7,22 @@ export const BasicHealthInfo: React.FC = () => {
   const { profile, updateProfile, setCurrentStep } = useHealth();
 
   const [name, setName] = useState(profile.name || '');
-  const [age, setAge] = useState(profile.age || 22);
+  const [age, setAge] = useState<number | string>(profile.age || '');
   const [gender, setGender] = useState(profile.gender || 'Male');
-  const [height, setHeight] = useState(profile.height || 170);
-  const [weight, setWeight] = useState(profile.weight || 68);
+  const [height, setHeight] = useState<number | string>(profile.height || '');
+  const [weight, setWeight] = useState<number | string>(profile.weight || '');
 
   // Live BMI calculation
-  const calculatedBMI = calculateBMI(weight, height);
+  const calculatedBMI = weight && height ? calculateBMI(Number(weight), Number(height)) : null;
 
   const handleContinue = async (e: React.FormEvent) => {
     e.preventDefault();
     await updateProfile({
       name: name.trim() || 'Health Enthusiast',
-      age: Number(age),
+      age: Number(age) || 25,
       gender,
-      height: Number(height),
-      weight: Number(weight),
+      height: Number(height) || 170,
+      weight: Number(weight) || 65,
       hasCompletedBasicInfo: true,
     });
     setCurrentStep('dashboard');
@@ -155,7 +155,7 @@ export const BasicHealthInfo: React.FC = () => {
                 />
               </div>
               <p className="text-[11px] text-slate-500 mt-1">
-                {(height / 30.48).toFixed(1)} feet approx.
+                {height ? `${(Number(height) / 30.48).toFixed(1)} feet approx.` : 'Enter your height in centimeters'}
               </p>
             </div>
 
@@ -168,7 +168,7 @@ export const BasicHealthInfo: React.FC = () => {
                 <div className="flex items-center gap-1">
                   <button
                     type="button"
-                    onClick={() => setWeight(prev => Math.max(30, Number(prev) - 0.5))}
+                    onClick={() => setWeight(prev => Math.max(30, (Number(prev) || 60) - 0.5))}
                     className="w-6 h-6 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs flex items-center justify-center"
                     aria-label="Decrease weight"
                   >
@@ -176,7 +176,7 @@ export const BasicHealthInfo: React.FC = () => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setWeight(prev => Math.min(250, Number(prev) + 0.5))}
+                    onClick={() => setWeight(prev => Math.min(250, (Number(prev) || 60) + 0.5))}
                     className="w-6 h-6 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs flex items-center justify-center"
                     aria-label="Increase weight"
                   >
@@ -194,13 +194,13 @@ export const BasicHealthInfo: React.FC = () => {
                   step="0.5"
                   required
                   value={weight}
-                  onChange={e => setWeight(Number(e.target.value))}
-                  placeholder="70"
+                  onChange={e => setWeight(e.target.value)}
+                  placeholder="e.g. 65"
                   className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-300 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-medium text-slate-800"
                 />
               </div>
               <p className="text-[11px] text-slate-500 mt-1">
-                {(weight * 2.20462).toFixed(1)} lbs approx.
+                {weight ? `${(Number(weight) * 2.20462).toFixed(1)} lbs approx.` : 'Enter your weight in kilograms'}
               </p>
             </div>
           </div>
@@ -213,37 +213,43 @@ export const BasicHealthInfo: React.FC = () => {
                 Instant Calculated Baseline
               </span>
               <span className="text-[11px] text-slate-500 font-mono">
-                Height: {height} cm • Weight: {weight} kg
+                {height && weight ? `Height: ${height} cm • Weight: ${weight} kg` : 'Awaiting measurements'}
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
-              <div className="p-3 bg-white rounded-lg border border-slate-200">
-                <div className="text-xs text-slate-700 font-medium">Your BMI</div>
-                <div className="text-2xl font-black text-slate-900 mt-0.5 flex items-baseline gap-2">
-                  <span>{calculatedBMI.bmi}</span>
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${calculatedBMI.badgeColor}`}>
-                    {calculatedBMI.category}
-                  </span>
+            {calculatedBMI ? (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
+                <div className="p-3 bg-white rounded-lg border border-slate-200">
+                  <div className="text-xs text-slate-700 font-medium">Your BMI</div>
+                  <div className="text-2xl font-black text-slate-900 mt-0.5 flex items-baseline gap-2">
+                    <span>{calculatedBMI.bmi}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${calculatedBMI.badgeColor}`}>
+                      {calculatedBMI.category}
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              <div className="p-3 bg-white rounded-lg border border-slate-200">
-                <div className="text-xs text-slate-700 font-medium">Ideal Normal Weight</div>
-                <div className="text-sm font-bold text-slate-800 mt-1">
-                  {calculatedBMI.idealMin} – {calculatedBMI.idealMax} kg
+                <div className="p-3 bg-white rounded-lg border border-slate-200">
+                  <div className="text-xs text-slate-700 font-medium">Ideal Normal Weight</div>
+                  <div className="text-sm font-bold text-slate-800 mt-1">
+                    {calculatedBMI.idealMin} – {calculatedBMI.idealMax} kg
+                  </div>
+                  <div className="text-[10px] text-slate-600">For {height} cm height</div>
                 </div>
-                <div className="text-[10px] text-slate-600">For {height} cm height</div>
-              </div>
 
-              <div className="p-3 bg-white rounded-lg border border-slate-200">
-                <div className="text-xs text-slate-700 font-medium">Daily Water Target</div>
-                <div className="text-sm font-bold text-cyan-800 mt-1">
-                  2.5 Liters / day
+                <div className="p-3 bg-white rounded-lg border border-slate-200">
+                  <div className="text-xs text-slate-700 font-medium">Daily Water Target</div>
+                  <div className="text-sm font-bold text-cyan-800 mt-1">
+                    2.5 Liters / day
+                  </div>
+                  <div className="text-[10px] text-slate-600">Hydration baseline</div>
                 </div>
-                <div className="text-[10px] text-slate-600">Hydration baseline</div>
               </div>
-            </div>
+            ) : (
+              <div className="py-4 text-center text-slate-500 text-xs">
+                Fill in your height and weight above to compute your live BMI and recommended weight range.
+              </div>
+            )}
 
             <p className="text-xs text-slate-600 mt-3 italic">
               &ldquo;This information becomes the basis for some of the later calculations.&rdquo;

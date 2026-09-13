@@ -1,12 +1,12 @@
 {
-  "projectId": "empyrean-palace-mghtt",
-  "appId": "1:716429849369:web:5d39d05fce29c062774b88",
-  "apiKey": "AIzaSyAMcEVKCziDcYQUFyxzTjCxQCwT8AGF768",
-  "authDomain": "empyrean-palace-mghtt.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-nutritrackhealth-b32c79e3-4d21-4754-8aa1-0d9ad58384fd",
-  "storageBucket": "empyrean-palace-mghtt.firebasestorage.app",
-  "messagingSenderId": "716429849369",
-  "measurementId": "",
-  "oAuthClientId": "716429849369-fgvu5hf22r2u2cpgvfhdurme0o9b059v.apps.googleusercontent.com",
+  "projectId": "nutrifit-b7420",
+  "appId": "1:563649527719:web:8407877c5f92bdd0af0082",
+  "apiKey": "AIzaSyC5TMTeRH6MlylKpTnkmHrbn9Zhh8o6gLw",
+  "authDomain": "nutrifit-b7420.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "nutrifit-b7420.firebasestorage.app",
+  "messagingSenderId": "563649527719",
+  "measurementId": "G-4YJFY3FBYN",
+  "oAuthClientId": "563649527719-mgavosaref8sp6g9lu8qhpkpetdu88br.apps.googleusercontent.com",
   "recaptchaSiteKey": ""
 }
