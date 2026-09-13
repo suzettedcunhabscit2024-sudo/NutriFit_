@@ -1,0 +1,6 @@
+{
+  "name": "NutriFit - Health & Fitness Tracker",
+  "description": "Personal health, fitness and nutrition tracking system. Track exercise calories with MET standards, monitor macros, log hydration, track sleep cycles, manage weight goals, and generate comprehensive daily health reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

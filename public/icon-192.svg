@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="nf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e3c32"/>
+      <stop offset="50%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#65a30d"/>
+    </linearGradient>
+    <linearGradient id="nf-leaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#84cc16"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="44" fill="#ffffff"/>
+  <rect width="186" height="186" x="3" y="3" rx="41" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+  <!-- Stylized N & Wellness Figure -->
+  <path d="M48 148 V58 C48 50 54 44 62 44 C67 44 71 47 74 51 L118 114 V58 C118 50 124 44 132 44 C140 44 146 50 146 58 V134 C146 142 140 148 132 148 C127 148 123 145 120 141 L76 78 V134 C76 142 70 148 62 148 C54 148 48 142 48 134 Z" fill="url(#nf-grad)"/>
+  <!-- Active Figure Head & Leaves -->
+  <circle cx="96" cy="44" r="10" fill="#15803d"/>
+  <path d="M96 32 C96 22 108 20 114 24 C116 30 110 36 96 32 Z" fill="url(#nf-leaf)"/>
+  <path d="M124 116 C124 104 136 102 140 106 C142 112 136 120 124 116 Z" fill="url(#nf-leaf)"/>
+</svg>
+

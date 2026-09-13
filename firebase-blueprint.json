@@ -1,0 +1,137 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with demographic and body measurements",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 100 },
+        "age": { "type": "number" },
+        "gender": { "type": "string", "maxLength": 20 },
+        "height": { "type": "number" },
+        "weight": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "name", "age", "gender", "height", "weight"]
+    },
+    "GoalSettings": {
+      "title": "GoalSettings",
+      "description": "Daily wellness targets set by the user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "waterMl": { "type": "number" },
+        "exerciseMinutes": { "type": "number" },
+        "sleepHours": { "type": "number" },
+        "caloriesTarget": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "waterMl", "exerciseMinutes", "sleepHours", "caloriesTarget"]
+    },
+    "ExerciseLog": {
+      "title": "ExerciseLog",
+      "description": "Logged exercise activities with calorie expenditure",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "exerciseName": { "type": "string", "maxLength": 100 },
+        "durationMinutes": { "type": "number" },
+        "caloriesBurned": { "type": "number" },
+        "met": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "exerciseName", "durationMinutes", "caloriesBurned", "timestamp"]
+    },
+    "WaterLog": {
+      "title": "WaterLog",
+      "description": "Water hydration entries throughout the day",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "amountMl": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "amountMl", "timestamp"]
+    },
+    "NutritionLog": {
+      "title": "NutritionLog",
+      "description": "Logged food and meals with macronutrient breakdown",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "foodName": { "type": "string", "maxLength": 100 },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" },
+        "mealType": { "type": "string", "maxLength": 50 },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "foodName", "calories", "protein", "carbs", "fat", "mealType", "timestamp"]
+    },
+    "SleepLog": {
+      "title": "SleepLog",
+      "description": "Daily sleep record with bedtime and wake time",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "bedtime": { "type": "string", "maxLength": 20 },
+        "wakeTime": { "type": "string", "maxLength": 20 },
+        "hours": { "type": "number" },
+        "minutes": { "type": "number" },
+        "totalHours": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "bedtime", "wakeTime", "hours", "minutes", "totalHours"]
+    },
+    "WeightLog": {
+      "title": "WeightLog",
+      "description": "Historical weight check-in record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "weight": { "type": "number" },
+        "date": { "type": "string", "maxLength": 30 },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "weight", "date", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Primary user profile document containing biometric measurements"
+    },
+    "/users/{userId}/goals/{goalId}": {
+      "schema": "GoalSettings",
+      "description": "Personalized daily hydration, calorie, sleep, and exercise goals"
+    },
+    "/users/{userId}/exercises/{exerciseId}": {
+      "schema": "ExerciseLog",
+      "description": "Logged physical activities"
+    },
+    "/users/{userId}/waterLogs/{waterLogId}": {
+      "schema": "WaterLog",
+      "description": "Water hydration entries"
+    },
+    "/users/{userId}/meals/{mealId}": {
+      "schema": "NutritionLog",
+      "description": "Logged meals and food intake"
+    },
+    "/users/{userId}/sleep/{sleepId}": {
+      "schema": "SleepLog",
+      "description": "Logged sleep duration and timings"
+    },
+    "/users/{userId}/weightRecords/{weightId}": {
+      "schema": "WeightLog",
+      "description": "Weight history log entries"
+    }
+  }
+}

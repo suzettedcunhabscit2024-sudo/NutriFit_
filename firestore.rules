@@ -1,0 +1,66 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow read: if true;
+    }
+
+    // User profile document
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create, update: if isOwner(userId);
+      allow delete: if isOwner(userId);
+
+      // Goals subcollection
+      match /goals/{goalId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // Exercise subcollection
+      match /exercises/{exerciseId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // Water hydration subcollection
+      match /waterLogs/{waterLogId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // Nutrition and meal intake subcollection
+      match /meals/{mealId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // Sleep tracking subcollection
+      match /sleep/{sleepId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // Weight history subcollection
+      match /weightRecords/{weightId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+  }
+}
