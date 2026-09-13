@@ -36,12 +36,12 @@ export const HomeHero: React.FC = () => {
           <span>NutriFit Health &amp; Nutrition System • Track • Nourish • Be Your Best</span>
         </div>
 
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shadow-md border-2 border-emerald-100 bg-white p-1">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl overflow-hidden shadow-lg border-2 border-emerald-100 bg-white p-1.5 transition-transform hover:scale-105">
             <img
               src="/nutrifit-logo.png"
               alt="NutriFit Emblem"
-              className="w-full h-full object-cover rounded-xl"
+              className="w-full h-full object-cover rounded-2xl"
               referrerPolicy="no-referrer"
             />
           </div>

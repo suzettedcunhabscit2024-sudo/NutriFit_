@@ -241,26 +241,26 @@ Evaluator Recommendation:
           className="overflow-y-auto flex-1 pr-1 space-y-4 text-slate-800 bg-white p-4 rounded-xl border border-slate-100 print:p-0 print:border-0"
         >
           {/* Report Header */}
-          <div className="border-b-2 border-emerald-600 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl overflow-hidden bg-white border border-emerald-100 p-0.5 shadow-xs shrink-0 flex items-center justify-center">
+          <div className="border-b-2 border-emerald-600 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3.5">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white border border-emerald-200 p-1 shadow-xs shrink-0 flex items-center justify-center">
                 <img
                   src="/nutrifit-logo.png"
                   alt="NutriFit Logo"
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded-xl"
                   referrerPolicy="no-referrer"
                 />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xl font-black text-slate-900">
+                  <span className="text-2xl font-black text-slate-900">
                     Nutri<span className="text-[#65a30d]">Fit</span>
                   </span>
-                  <span className="text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
                     Official Health Summary
                   </span>
                 </div>
-                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                <p className="text-xs text-slate-500 font-semibold mt-1">
                   Track • Nourish • Be Your Best
                 </p>
               </div>

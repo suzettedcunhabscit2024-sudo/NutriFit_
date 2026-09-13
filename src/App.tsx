@@ -12,6 +12,7 @@ import { BasicHealthInfo } from './components/BasicHealthInfo';
 import { Dashboard } from './components/Dashboard';
 import { DailyReportModal } from './components/features/DailyReportModal';
 import { MobileBottomNav } from './components/MobileBottomNav';
+import { GrowingPlantBackground } from './components/GrowingPlantBackground';
 import { HeartPulse, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 
 const AppContent: React.FC = () => {
@@ -24,27 +25,31 @@ const AppContent: React.FC = () => {
   } = useHealth();
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans pb-16 md:pb-0">
-      <Header />
+    <div className="min-h-screen flex flex-col bg-[#edf4ec] text-slate-900 font-sans pb-16 md:pb-0 relative selection:bg-emerald-200 selection:text-emerald-900">
+      {/* 3D Scroll-reactive Growing Plant and Matte Green Atmosphere */}
+      <GrowingPlantBackground />
 
-      {/* Main Content Area */}
-      <main className="flex-1">
-        {currentStep === 'home' && <HomeHero />}
-        {currentStep === 'auth' && <AuthView />}
-        {currentStep === 'basic-info' && <BasicHealthInfo />}
-        {currentStep === 'dashboard' && <Dashboard />}
-      </main>
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Header />
 
-      {/* Global Daily Report Modal (Star Feature ⭐) */}
-      {showDailyReportModal && (
-        <DailyReportModal onClose={() => setShowDailyReportModal(false)} />
-      )}
+        {/* Main Content Area */}
+        <main className="flex-1">
+          {currentStep === 'home' && <HomeHero />}
+          {currentStep === 'auth' && <AuthView />}
+          {currentStep === 'basic-info' && <BasicHealthInfo />}
+          {currentStep === 'dashboard' && <Dashboard />}
+        </main>
 
-      {/* Mobile Sticky Bottom Navigation (Phone / Mobile View) */}
-      <MobileBottomNav onOpenModal={setActiveFeatureTab} />
+        {/* Global Daily Report Modal (Star Feature ⭐) */}
+        {showDailyReportModal && (
+          <DailyReportModal onClose={() => setShowDailyReportModal(false)} />
+        )}
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 sm:py-8 mt-12 no-print">
+        {/* Mobile Sticky Bottom Navigation (Phone / Mobile View) */}
+        <MobileBottomNav onOpenModal={setActiveFeatureTab} />
+
+        {/* Footer */}
+        <footer className="bg-white/85 backdrop-blur-md border-t border-emerald-900/10 py-6 sm:py-8 mt-12 no-print shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
@@ -112,6 +117,7 @@ const AppContent: React.FC = () => {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 };

@@ -196,8 +196,8 @@ export const Dashboard: React.FC = () => {
             <span>Today is {formattedDate}</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl overflow-hidden bg-white shadow-xs p-0.5 shrink-0 hidden sm:flex items-center justify-center">
+          <div className="flex items-center gap-3.5">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white shadow-md p-1 shrink-0 flex items-center justify-center border-2 border-white/30">
               <img
                 src="/nutrifit-logo.png"
                 alt="NutriFit"

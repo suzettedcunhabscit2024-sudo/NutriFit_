@@ -18,28 +18,28 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-18 sm:h-20">
           {/* Brand Logo & Title */}
           <div
             id="brand-logo"
             onClick={() => setCurrentStep('home')}
-            className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group select-none"
+            className="flex items-center gap-3 sm:gap-3.5 cursor-pointer group select-none py-1"
           >
-            <div className="w-10 h-10 rounded-xl overflow-hidden shadow-xs border border-emerald-100/80 bg-white group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden shadow-sm border border-emerald-200/80 bg-white group-hover:scale-105 transition-transform flex items-center justify-center shrink-0 p-0.5">
               <img
                 src="/nutrifit-logo.png"
                 alt="NutriFit Logo"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl"
                 referrerPolicy="no-referrer"
               />
             </div>
             <div>
               <div className="flex items-center gap-1">
-                <span className="text-xl font-extrabold tracking-tight text-slate-900 font-sans">
+                <span className="text-2xl sm:text-[26px] font-black tracking-tight text-slate-900 font-sans leading-none">
                   Nutri<span className="text-[#65a30d]">Fit</span>
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium hidden sm:block leading-none">
+              <p className="text-xs text-slate-500 font-medium hidden sm:block mt-1 leading-none">
                 Track • Nourish • Be Your Best
               </p>
             </div>

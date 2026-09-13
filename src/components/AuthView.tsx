@@ -218,11 +218,11 @@ export const AuthView: React.FC = () => {
 
       <div className="bg-white rounded-2xl p-5 sm:p-8 border border-slate-200 shadow-sm">
         <div className="text-center mb-5 sm:mb-6">
-          <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-xs border border-emerald-100 bg-white mx-auto mb-3 p-0.5 flex items-center justify-center">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl overflow-hidden shadow-md border-2 border-emerald-100 bg-white mx-auto mb-4 p-1 flex items-center justify-center">
             <img
               src="/nutrifit-logo.png"
               alt="NutriFit"
-              className="w-full h-full object-cover rounded-xl"
+              className="w-full h-full object-cover rounded-2xl"
               referrerPolicy="no-referrer"
             />
           </div>
