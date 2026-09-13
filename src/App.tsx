@@ -52,16 +52,21 @@ const AppContent: React.FC = () => {
         <footer className="bg-white/85 backdrop-blur-md border-t border-emerald-900/10 py-6 sm:py-8 mt-12 no-print shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
-                <HeartPulse className="w-5 h-5" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg overflow-hidden bg-white border border-emerald-200 flex items-center justify-center p-0.5 shadow-xs">
+                <img
+                  src="/nutrifit-logo.png"
+                  alt="NutriFit"
+                  className="w-full h-full object-cover rounded-md"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
                 <span className="font-extrabold text-slate-900 text-sm">
-                  Nutri<span className="text-emerald-600">Track</span>
+                  Nutri<span className="text-[#65a30d]">Fit</span>
                 </span>
                 <span className="text-xs text-slate-500 ml-2">
-                  Track. Understand. Improve.
+                  Track • Nourish • Be Your Best
                 </span>
               </div>
             </div>
@@ -100,19 +105,11 @@ const AppContent: React.FC = () => {
               </button>
             </div>
 
-            <div className="text-xs text-slate-600 text-center md:text-right flex items-center justify-center md:justify-end gap-2.5">
-              <img
-                src="/nutrifit-logo.png"
-                alt="NutriFit"
-                className="w-6 h-6 rounded-md object-cover border border-slate-200"
-                referrerPolicy="no-referrer"
-              />
-              <div>
-                <span className="font-bold text-slate-800">NutriFit</span>
-                <p className="text-[11px] text-slate-500">
-                  Track • Nourish • Be Your Best
-                </p>
-              </div>
+            <div className="text-xs text-slate-500 text-center md:text-right">
+              <p className="font-medium text-slate-600">© {new Date().getFullYear()} NutriFit</p>
+              <p className="text-[11px] text-slate-400 mt-0.5">
+                Personalized Health & Nutrition
+              </p>
             </div>
           </div>
         </div>
